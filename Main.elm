@@ -61,72 +61,59 @@ main =
             * ...with full pseudo-class support
             * ...and without cluttering the browser's dev tools
             """
+        , md
+            """
+            ## Vanlla Elm
+
+            ```
+            div
+              [ class "some-class-name"
+              [ style
+                [ ( "display", "flex" )
+                , ( "background-color", "white" )
+                ]
+              ]
+              children
+            ```
+
+            - Namespacing: nope
+            - Expressive Reuse: Yes!
+            - Inlining: nope
+            """
+        , md
+            """
+            ## elm-css
+
+            ```
+            TODO
+            ```
+
+            - Namespacing: some
+            - Expressive Reuse: Yes!
+            - Inlining: nope
+            - *Static type checking: Yes!*
+            """
+
+        , md
+            """
+            ## Styled Html
+
+            ```
+            TODO
+            ```
+
+            - Namespacing: Yes!
+            - Expressive Reuse: Yes!
+            - Inlining: Yes!
+            - *Static type checking: With Elm-Css*
+
+            - **But will it scale?**
+            """
         ]
 
 
 
 {-
-   ---
-
-   (My) CSS pain points:
-
-
-   * *Namespacing*: I want to pick class names without fear of collisions
-
-   * *Programming*: I want the full power of the programming language (variables, functions, lists...)
-
-   * *Inlining*: I don't care to create a class name that I will reference once
-
-
-
-
-
-   ----
-   What does vanilla Elm:
-
-   ```
-   div
-     [ class "some-class-name"
-     [ style
-       [ ( "display", "flex" )
-       , ( "background-color", "white" )
-       ]
-     ]
-     children
-   ```
-
-   Namespacing: nope
-   Inlining: nope
-   Programing: Yes!
-
-   -----
-
-   Elm Css
-
-   ```
-   ```
-
-   Namespacing: some
-   Inlining: nope
-   Programming: Yes!
-
-   Static type checking: Yes!
-
-
-   -----
-
-   Syled Html
-
-   ```
-   ```
-
-   Namespacing: Yes!
-   Inlining: Yes!
-   Programming: Yes!
-
-   Static type checking: With Elm-Css
-
-   But will it scale?
 
    -----
 
