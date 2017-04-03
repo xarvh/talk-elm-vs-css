@@ -1,11 +1,15 @@
 module Main exposing (..)
 
+import Css exposing (rgb, px, hex)
 import Slides exposing (..)
+import Slides.Styles
 
 
 main =
     Slides.app
-        Slides.slidesDefaultOptions
+        { slidesDefaultOptions
+            | style = Slides.Styles.elmMinimalist (rgb 255 255 255) (rgb 230 230 230) (px 25) (hex "60B5CC")
+        }
         [ md
             """
             # Elm vs CSS
@@ -63,12 +67,12 @@ main =
             """
         , md
             """
-            ## Vanlla Elm
+            ## Vanilla Elm
 
             ```
             div
               [ class "some-class-name"
-              [ style
+              , style
                 [ ( "display", "flex" )
                 , ( "background-color", "white" )
                 ]
@@ -85,7 +89,10 @@ main =
             ## elm-css
 
             ```
-            TODO
+            h1
+              [ fontWeight (int 400)
+              , fontSize (px 70)
+              ]
             ```
 
             - Namespacing: some
@@ -93,33 +100,52 @@ main =
             - Inlining: nope
             - *Static type checking: Yes!*
             """
-
         , md
             """
-            ## Styled Html
+            ## Styled html
 
             ```
-            TODO
+            redBackgroundClass =
+                makeClass "redBackground"
+                    [ "background-color: #e00" ] []
+            ```
+            ```
+            div
+                [ class redBackgroundClass ]
+                [ text "I have red background" ]
+            ```
+            """
+        , md
+            """
+            ```
+            style = class << makeClass ""
+            ```
+            ```
+            div
+                [ style
+                  [ "color: grey" ]
+                  [ selector ":hover"
+                    [ "color: white" ] []
+                  ]
+                ]
+                [ text "I am white on hover!" ]
             ```
 
             - Namespacing: Yes!
             - Expressive Reuse: Yes!
             - Inlining: Yes!
-            - *Static type checking: With Elm-Css*
-
-            - **But will it scale?**
+            - *Static type checking: with Elm-Css*
+            """
+        , mdFragments
+            [ "Styled Html is very *usable*..."
+            , "...but might be terrible for performance"
+            ]
+        , md
+            """
+            TODO: describe challenge
+            """
+        , md
+            """
+            @xarvh
             """
         ]
-
-
-
-{-
-
-   -----
-
-   How do we WANT to declare CSS?
-   How can we make Elm do it?
-   ---> static?
-
-
--}
